@@ -1,3 +1,7 @@
+package framework;
+
+import java.util.concurrent.TimeUnit;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterMethod;
@@ -11,6 +15,8 @@ public abstract class SeleniumTestBase {
 		System.setProperty("webdriver.chrome.driver","C:\\temp\\chromedriver.exe");
 
 		this.driver = new ChromeDriver();
+
+		SetOptions();
 	}
 
 	@AfterMethod
@@ -19,8 +25,13 @@ public abstract class SeleniumTestBase {
 			this.driver.quit();
 		}
 	}
-	
+
 	protected WebDriver getDriver() {
 		return this.driver;
+	}
+	
+	private void SetOptions() {
+		this.driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+		this.driver.manage().window().maximize();
 	}
 }
