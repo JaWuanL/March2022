@@ -45,4 +45,32 @@ public class HomePage extends PageObjectBase {
 
 		return tiles.toArray(ProductTile[]::new);
 	}
+
+	public HomePage addProductToCart(String product) {
+		ProductTile productTile = findProductTile(product);
+		
+		if(productTile != null) {
+			productTile.addToCart();		
+		}
+
+		return this;
+	}
+
+	private ProductTile findProductTile(String product) {
+		ProductTile[] productTiles = getProductTiles();
+
+		for(ProductTile productTile:productTiles) {
+			if(productTile.getTitle().equals(product)) {
+				return productTile;
+			}
+		}		
+		return null;
+	}
+
+	public String getCartConfirmationProduct() {
+		CartConfirmationOverlay overlay = new CartConfirmationOverlay(this.getDriver());
+		overlay.WaitUntilDisplayed();
+		
+		return overlay.getAddedProduct();
+	}
 }

@@ -1,13 +1,20 @@
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
-public class ProductTile {
-	private WebElement wrappedElement;
+public class ProductTile extends ControlExtensionBase {
+	private By titleLocator = By.cssSelector("a.product-name");
+	private By addToCartButtonLocator= By.cssSelector("a.ajax_add_to_cart_button");
 
 	public ProductTile(WebElement element) {
-		this.wrappedElement = element;
+		super(element);
 	}
 
-	protected WebElement getWrappedElement() {
-		return wrappedElement;
-	}	
+	public String getTitle() {
+		return find(titleLocator).getAttribute("title");
+	}
+
+	public void addToCart() {
+		WebElement element = find(addToCartButtonLocator);
+		SyntheticClick(element);
+	}
 }
