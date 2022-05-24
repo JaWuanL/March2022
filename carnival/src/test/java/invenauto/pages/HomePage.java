@@ -1,44 +1,55 @@
+package invenauto.pages;
+
 import java.util.ArrayList;
 import java.util.List;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.How;
 
 import framework.PageObjectBase;
+import invenauto.foundation.CartConfirmationOverlay;
+import invenauto.foundation.ProductTile;
 
 public class HomePage extends PageObjectBase {
-	private static final String URL = "http://invenauto.tech/index.php";
 
-	public HomePage(WebDriver driver) {
-		super(driver);
+	@FindBy(how = How.ID, using="search_query_top")
+	private WebElement searchTextBox;
+	
+	@FindBy(how = How.CSS, using="button[name='submit_search']")
+	private WebElement searchTextButton;
+	
+	@FindBy(how = How.CSS, using="ul#homefeatured>li")
+	private ArrayList<WebElement> tileElements;
+	
+	public HomePage(WebDriver driver, String baseUrl) {
+		super(driver, baseUrl);
 	}
 
 	public HomePage navigate() {
-		this.getDriver().navigate().to(URL);
+		this.navigateToRelativeUrl();
 
 		return this;
 	}
 
 	public HomePage enterSearchText(String searchText) {
-		WebElement element = this.getDriver().findElement(By.id("search_query_top"));
-		element.sendKeys(searchText);
+		searchTextBox.sendKeys(searchText);
 
 		return this;
 	}
 
 	public SearchResultsPage clickSearchTextButton() {
-		WebElement buttonElement = this.getDriver().findElement(By.cssSelector("button[name='submit_search']"));
-		buttonElement.click();
+		searchTextButton.click();
 
-		return new SearchResultsPage(this.getDriver());
+		return new SearchResultsPage(this.getDriver(), this.getBaseUrl());
 	}
 
 	public ProductTile[] getProductTiles() {
 		List<ProductTile> tiles = new ArrayList<ProductTile>();
-		List<WebElement> elements = this.getDriver().findElements(By.cssSelector("ul#homefeatured>li"));
 
-		for(WebElement element:elements) {
+		for(WebElement element:tileElements) {
 			ProductTile tile = new ProductTile(element);
 			tiles.add(tile);
 		}
@@ -68,9 +79,14 @@ public class HomePage extends PageObjectBase {
 	}
 
 	public String getCartConfirmationProduct() {
-		CartConfirmationOverlay overlay = new CartConfirmationOverlay(this.getDriver());
+		CartConfirmationOverlay overlay = new CartConfirmationOverlay(this.getDriver(), this.getBaseUrl());
 		overlay.WaitUntilDisplayed();
 		
 		return overlay.getAddedProduct();
+	}
+
+	@Override
+	protected String getRelativeUrl() {
+		return "index.php";
 	}
 }

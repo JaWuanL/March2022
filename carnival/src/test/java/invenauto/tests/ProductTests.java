@@ -1,16 +1,21 @@
+package invenauto.tests;
+
 import static org.testng.Assert.assertEquals;
 
 import org.testng.annotations.Test;
 
 import framework.SeleniumTestBase;
+import invenauto.foundation.InvenautoTestBase;
+import invenauto.foundation.ProductTile;
+import invenauto.pages.HomePage;
 
-public class ProductTests extends SeleniumTestBase{
+public class ProductTests extends InvenautoTestBase {
 
 	@Test
 	public void canGetProductTiles() {
 		int tileCount = 8;
 
-		ProductTile[] tiles = new HomePage(getDriver())
+		ProductTile[] tiles = new HomePage(this.getDriver(), this.getBaseUrl())
 				.navigate()
 				.getProductTiles();
 
@@ -21,7 +26,7 @@ public class ProductTests extends SeleniumTestBase{
 	public void addProductToCart() {
 		String product = "Printed Summer Dress";
 
-		String cartConfirmationProduct = new HomePage(this.getDriver())
+		String cartConfirmationProduct = new HomePage(this.getDriver(), this.getBaseUrl())
 				.navigate()
 				.addProductToCart(product)
 				.getCartConfirmationProduct();

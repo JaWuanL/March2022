@@ -1,3 +1,5 @@
+package invenauto.foundation;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -11,8 +13,8 @@ public class CartConfirmationOverlay extends PageObjectBase {
 	private WebElement rootElement;
 	private By addedProductLocator = By.cssSelector("span#layer_cart_product_title");
 
-	protected CartConfirmationOverlay(WebDriver driver) {
-		super(driver);
+	public CartConfirmationOverlay(WebDriver driver, String baseUrl) {
+		super(driver, baseUrl);
 
 		WebElement element = this.getDriver().findElement(By.cssSelector("div#layer_cart"));
 		this.rootElement = element;
@@ -27,5 +29,10 @@ public class CartConfirmationOverlay extends PageObjectBase {
 	public void WaitUntilDisplayed() {	
 		WebDriverWait wait = new WebDriverWait(this.getDriver(), 30);
 		wait.until(ExpectedConditions.attributeContains(this.rootElement, "style", "display: block;"));
+	}
+
+	@Override
+	protected String getRelativeUrl() {
+		return null;
 	}
 }

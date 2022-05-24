@@ -1,18 +1,19 @@
-package demoQa;
+package demoQa.tests;
 
 import static org.testng.Assert.assertEquals;
 
 import org.testng.annotations.Test;
 
-import framework.SeleniumTestBase;
+import demoQa.foundation.DemoQaTestBase;
+import demoQa.pages.TextBoxPage;
 
-public class ControlExtensionTests extends SeleniumTestBase {
+public class ControlExtensionTests extends DemoQaTestBase {
 	@Test
 	public void canEnterTextIntoTextboxes() {
 		String fullName = "Dennis Taylor";
 		String address = "110 Main";
 
-		TextBoxPage page = new TextBoxPage(this.getDriver())
+		TextBoxPage page = new TextBoxPage(this.getDriver(), this.getBaseUrl())
 				.navigate()
 				.enterFullName(fullName)
 				.enterCurrentAddress(address);

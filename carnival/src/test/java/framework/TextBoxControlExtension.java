@@ -1,4 +1,4 @@
-package demoQa;
+package framework;
 
 import org.openqa.selenium.WebElement;
 

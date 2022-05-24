@@ -1,4 +1,4 @@
-package demoQa;
+package demoQa.pages;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -7,7 +7,6 @@ import org.openqa.selenium.support.FindBy;
 import framework.PageObjectBase;
 
 public class TextBoxPage extends PageObjectBase {
-	private static final String URL = "https://demoqa.com/text-box";
 
 	@FindBy(id="userName")
 	private WebElement userNameElement;
@@ -15,12 +14,12 @@ public class TextBoxPage extends PageObjectBase {
 	@FindBy(id="currentAddress")
 	private WebElement currentAddressElement;
 	
-	public TextBoxPage(WebDriver driver) {
-		super(driver);
+	public TextBoxPage(WebDriver driver, String baseUrl) {
+		super(driver, baseUrl);
 	}
 
 	public TextBoxPage navigate() {
-		this.getDriver().navigate().to(URL);
+		super.navigateToRelativeUrl();
 
 		return this;
 	}
@@ -43,5 +42,10 @@ public class TextBoxPage extends PageObjectBase {
 
 	public String getAddress() {
 		return getControlExtensionFactory().getTextbox(currentAddressElement).getValue();		
+	}
+
+	@Override
+	protected String getRelativeUrl() {
+		return "textbox";
 	}
 }

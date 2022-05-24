@@ -1,5 +1,9 @@
+package invenauto.foundation;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+
+import framework.ControlExtensionBase;
 
 public class ProductTile extends ControlExtensionBase {
 	private By titleLocator = By.cssSelector("a.product-name");
