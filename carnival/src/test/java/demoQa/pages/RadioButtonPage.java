@@ -54,6 +54,6 @@ public class RadioButtonPage extends PageObjectBase {
 
 	private void selectRadioButton(String label) {
 		RadioButtonControlExtension control = getControlExtensionFactory().getRadioButtonGroup(radioGroupElement).get(label);	
-		control.select(label);
+		control.select();
 	}
 }

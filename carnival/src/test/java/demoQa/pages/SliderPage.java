@@ -1,4 +1,4 @@
-package demoQa.tests;
+package demoQa.pages;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;

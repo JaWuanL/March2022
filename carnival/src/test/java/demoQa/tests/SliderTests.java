@@ -5,6 +5,7 @@ import static org.testng.Assert.assertEquals;
 import org.testng.annotations.Test;
 
 import demoQa.foundation.DemoQaTestBase;
+import demoQa.pages.SliderPage;
 
 public class SliderTests extends DemoQaTestBase {
 	@Test

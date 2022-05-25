@@ -8,7 +8,7 @@ public class RadioButtonControlExtension extends ControlExtensionBase {
 		super(element);
 	}
 
-	public void select(String label) {
+	public void select() {
 		getWrappedElement().click();
 	}
 }

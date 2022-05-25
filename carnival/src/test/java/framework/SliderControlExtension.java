@@ -16,17 +16,20 @@ public class SliderControlExtension extends ControlExtensionBase {
 	public void setValue(int value) {
 		int min = getMin();
 		int max = getMax();
-		
+
 		if(value < min || value > max) {
 			throw new RuntimeException(value + " is out of bounds for the slider. Min: " + min + " Max: " + max);
 		}
-		
-		Duration timeout = Duration.ofSeconds(10);
 
 		getStatusElement().click();
 
+		Duration timeout = Duration.ofSeconds(15);
 		Stopwatch stopWatch = Stopwatch.createStarted();
-		while(getValue() != value && stopWatch.elapsed().compareTo(timeout) < 0) {
+		while(getValue() != value) {
+			if(stopWatch.elapsed().compareTo(timeout) > 0)
+			{
+				throw new RuntimeException("Could not set slider value to " +value+ " within the timeout.");
+			}
 			if(getValue() < value) {
 				getStatusElement().sendKeys(Keys.ARROW_RIGHT);
 			}
@@ -38,22 +41,22 @@ public class SliderControlExtension extends ControlExtensionBase {
 
 	public int getMax() {
 		String text = getStatusElement().getAttribute("max");
-		
+
 		return Integer.parseInt(text);
 	}
 
 	public int getMin() {
 		String text = getStatusElement().getAttribute("min");
-		
+
 		return Integer.parseInt(text);
 	}
 
 	public int getValue() {
 		String text = getStatusElement().getAttribute("value");
-		
+
 		return Integer.parseInt(text);
 	}
-	
+
 	private WebElement getStatusElement() {
 		return getWrappedElement().findElement(By.tagName("input"));
 	}
