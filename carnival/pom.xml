@@ -10,6 +10,25 @@
     <artifactId>selenium-java</artifactId>
     <version>3.141.59</version>
 </dependency>
+<!-- https://mvnrepository.com/artifact/io.rest-assured/rest-assured -->
+<dependency>
+    <groupId>io.rest-assured</groupId>
+    <artifactId>rest-assured</artifactId>
+    <version>5.1.0</version>
+    <scope>test</scope>
+</dependency>
+<!-- https://mvnrepository.com/artifact/org.json/json -->
+<dependency>
+    <groupId>org.json</groupId>
+    <artifactId>json</artifactId>
+    <version>20220320</version>
+</dependency>
+<!-- https://mvnrepository.com/artifact/com.googlecode.json-simple/json-simple -->
+<dependency>
+    <groupId>com.googlecode.json-simple</groupId>
+    <artifactId>json-simple</artifactId>
+    <version>1.1.1</version>
+</dependency>
   </dependencies>
   <!-- Force Eclipse and Maven to use a Java 8 JDK compiler-->
 <properties>
