@@ -1,5 +1,8 @@
 package framework;
 
+import static org.testng.Assert.assertFalse;
+
+import java.net.URL;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.WebDriver;
@@ -17,11 +20,12 @@ public abstract class SeleniumTestBase {
 	
 	@BeforeMethod
 	public void setup() {
-		System.setProperty("webdriver.chrome.driver","C:\\temp\\chromedriver.exe");
+		System.setProperty("webdriver.chrome.driver","/Users/jawuanlang/git/March2022/carnival/src/test/resources/mac/chromedriver");
 
 		this.driver = new ChromeDriver();
 		
 		SetOptions();
+
 	}
 
 	@AfterMethod

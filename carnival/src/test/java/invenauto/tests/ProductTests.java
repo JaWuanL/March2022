@@ -4,7 +4,6 @@ import static org.testng.Assert.assertEquals;
 
 import org.testng.annotations.Test;
 
-import framework.SeleniumTestBase;
 import invenauto.foundation.InvenautoTestBase;
 import invenauto.foundation.ProductTile;
 import invenauto.pages.HomePage;
