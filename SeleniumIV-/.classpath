@@ -36,5 +36,6 @@
 	</classpathentry>
 	<classpathentry kind="con" path="org.testng.TESTNG_CONTAINER"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="src" path="/SeleniumIV"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
