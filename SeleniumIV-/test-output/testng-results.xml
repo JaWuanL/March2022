@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
+  <reporter-output>
+  </reporter-output>
+  <suite started-at="2022-06-04T19:25:45 EDT" name="Default suite" finished-at="2022-06-04T19:26:08 EDT" duration-ms="22864">
+    <groups>
+    </groups>
+    <test started-at="2022-06-04T19:25:45 EDT" name="Default test" finished-at="2022-06-04T19:26:08 EDT" duration-ms="22864">
+      <class name="tests.BackHome">
+        <test-method is-config="true" signature="setup()[pri:0, instance:tests.BackHome@37e547da]" started-at="2022-06-04T19:25:45 EDT" name="setup" finished-at="2022-06-04T19:25:58 EDT" duration-ms="12861" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method signature="goBackToHomePage()[pri:0, instance:tests.BackHome@37e547da]" started-at="2022-06-04T19:25:58 EDT" name="goBackToHomePage" finished-at="2022-06-04T19:26:08 EDT" duration-ms="9852" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- goBackToHomePage -->
+        <test-method is-config="true" signature="cleanup()[pri:0, instance:tests.BackHome@37e547da]" started-at="2022-06-04T19:26:08 EDT" name="cleanup" finished-at="2022-06-04T19:26:08 EDT" duration-ms="107" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- cleanup -->
+      </class> <!-- tests.BackHome -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
+</testng-results>
